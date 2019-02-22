@@ -1,0 +1,63 @@
+
+
+
+
+<div class="card">
+    <div class="card-header"> liste <small><code>des</code> évenement</small>
+        <button class="btn btn-primary pull-right" type="button" routerLink="/magasins/eventsAdd"><i class="fa fa-lightbulb-o"></i>&nbsp;Ajouter Un Evénement</button>
+    </div>
+    <div class="card-body">
+        <div class="animated fadeIn">
+
+            <!--/.row-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fa fa-align-justify"></i> ajouter un Evénement
+                        </div>
+                        <div class="card-body">
+
+                            <form novalidate #form="ngForm" (ngSubmit)="registerEvents(form)">
+
+                                  <fieldset >
+                                    <div class="form-group">
+                                        <label>Nom Evénement</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               name="nom"
+                                               [(ngModel)]="events.nom"
+                                               required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>contenu Evénement</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               name="content"
+                                               [(ngModel)]="events.content"
+                                               required>
+                                    </div>
+                                   
+
+                                </fieldset>
+                                <button type="submit"
+                                        class="btn btn-primary">Submit
+                                </button>
+
+
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+                <!--/.col-->
+            </div>
+            <!--/.row-->
+        </div>
+
+    </div>
+</div>
+
+
