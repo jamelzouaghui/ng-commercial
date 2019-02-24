@@ -1,4 +1,4 @@
-export const navItems = [
+export const navItemsAdmin = [
     {
         name: 'Dashboard',
         url: '/dashboard',
@@ -33,20 +33,8 @@ export const navItems = [
             }
 
         ]
-    },
-    {
-        name: 'Magasins',
-        url: '/magasins',
-        icon: 'icon-star',
-        children: [
-            
-            {
-                name: 'Evenements',
-                url: '/magasins/events',
-                icon: 'icon-star'
-            }
-        ]
     }
+   
 
    
    

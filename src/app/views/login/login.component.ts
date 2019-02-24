@@ -18,6 +18,7 @@ export class LoginComponent {
    password: string;
    error: string;
    public result: any;
+   public role; 
 
     constructor(private router: Router, private _userService: UserService,
         private authenticationService: AuthService) {
@@ -38,8 +39,11 @@ export class LoginComponent {
                
                 this._userService.getUser(this.username).subscribe(data => {
                     console.log('yes');
+                    console.log(data);
                     this.user = data;
+                  
                     localStorage.setItem("currentUser", JSON.stringify(this.user[0]));
+                    localStorage.setItem("role", JSON.stringify(this.user[0].role));
                      let authToken = this.authenticationService.getToken();
                      localStorage.setItem("Token", JSON.stringify(authToken));
                      

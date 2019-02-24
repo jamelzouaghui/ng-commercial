@@ -20,7 +20,7 @@
 
                             <form novalidate #form="ngForm" (ngSubmit)="registerEvents(form)">
 
-                                  <fieldset >
+                                  
                                     <div class="form-group">
                                         <label>Nom Evénement</label>
                                         <input type="text"
@@ -38,9 +38,7 @@
                                                [(ngModel)]="events.content"
                                                required>
                                     </div>
-                                   
-
-                                </fieldset>
+                             
                                 <button type="submit"
                                         class="btn btn-primary">Submit
                                 </button>

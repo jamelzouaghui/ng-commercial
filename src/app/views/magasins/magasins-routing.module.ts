@@ -8,6 +8,7 @@ import {EventsComponent} from './../magasins/events/events.component';
 import {DeleteEventsComponent} from './../magasins/delete-events/delete-events.component';
 import { UpdateEventsComponent } from './../magasins/update-events/update-events.component';
 import { AddEventsComponent } from './../magasins/add-events/add-events.component';
+import {AddMagasinsComponent} from './../magasins/add-magasins/add-magasins.component';
 
 const routes: Routes = [
   {
@@ -33,7 +34,7 @@ const routes: Routes = [
         }
       },
       {
-        path: 'eventsUpdate',
+        path: 'eventsUpdate/:id',
         component: UpdateEventsComponent,
         canActivate:[AuthGuard],
         data: {
@@ -46,6 +47,14 @@ const routes: Routes = [
         canActivate:[AuthGuard],
         data: {
           title: 'eventsDelete'
+        }
+      },
+      {
+        path: 'magasinsAdd',
+        component: AddMagasinsComponent,
+        canActivate:[AuthGuard],
+        data: {
+          title: 'magasinsAdd'
         }
       }
       

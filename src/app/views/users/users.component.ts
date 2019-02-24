@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from './../../service/user.service';
-import {Router} from '@angular/router';
+import {Router,ActivatedRoute} from '@angular/router';
 import {NgForm} from '@angular/forms';
 
 import {Subject} from 'rxjs/Subject';
@@ -12,12 +12,14 @@ import {Subject} from 'rxjs/Subject';
 export class UsersComponent implements OnInit {
 currentIndex;
 user;
+
  users=  [] ;
      errorMessage: string;
-  constructor(private _userService: UserService,private router: Router) { }
+  constructor(private _userService: UserService,private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
       this.getContacts();
+   
   }
   
   
@@ -25,13 +27,23 @@ user;
     this._userService.getUsers().subscribe(
       users => {
       this.users = users;
-          console.log(this.users);
-       //this.dtTrigger.next();
+       
        }, 
         error => this.errorMessage = <any> error
     );
     
   }
+   deleteUser(user) {
+    this._userService.deleteUser(user).subscribe(
+            data => {
+
+             this.getContacts();  
+
+            },
+            error => this.errorMessage = <any> error
+        );
+  }
+
 
 
 }

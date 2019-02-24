@@ -3,6 +3,7 @@ import {UserService} from './../../../service/user.service';
 import {Magasins} from './../../../models/magasins';
 import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
+import {MagasinsService} from './../../../service/magasins.service';
 
 
 
@@ -16,7 +17,7 @@ currentIndex;
 magasin;
 magasins: Array<Magasins>= [] ;
      errorMessage: string;
-  constructor(private _userService: UserService,private router: Router) { }
+  constructor(private _userService: UserService,private _magasinsService: MagasinsService,private router: Router) { }
 
   ngOnInit() {
       this.getMagasins();
@@ -34,6 +35,16 @@ magasins: Array<Magasins>= [] ;
     );
     
   }
+   deleteUser(user) {
+    this._userService.deleteUser(user).subscribe(
+            data => {
 
+             this.getMagasins();  
+
+            },
+            error => this.errorMessage = <any> error
+        );
+  }
+ 
 
 }

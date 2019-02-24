@@ -16,24 +16,24 @@
                             <table class="table table-bordered table-striped table-sm">
                                 <thead>
                                     <tr>
-                                       
+                                        <th>ID</th>
                                         <th>Nom evenement</th>
                                         <th>contenu </th>
-
-
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr  *ngFor="let event of data; let i = index">
-
+                                    <tr  *ngFor="let event of events; let i = index">
+                                        <td>{{event.id}}</td>
                                         <td>{{event.nom}}</td>
                                         <td>{{event.content}}</td>
 
 
                                         <td>
-                                            <button class="btn btn-danger" (click)="deleteEvent(event)"> Delete</button>
-                                            <button class="btn btn-danger" (click)="editEvent(event)" style="margin-left: 20px;"> Edit</button>
+                                            <button class="btn btn-danger" (click)="deleteEvent(event.id)"> Delete</button>
+                                            <a    routerLink="/magasins/eventsUpdate/{{event.id}}"  class="btn btn-social-icon btn-dropbox" ><i class="fa fa-edit"></i></a>
+                                            <button class="btn btn-danger" (click)="intersedEvent(event.id)" style="margin-left: 20px;"> Intéresser</button>
+                                            <a    routerLink="/events/interessedList/{{event.id}}"  class="btn btn-social-icon btn-dropbox" >liste personne interssées</a>
                                         </td>
                                     </tr>
 

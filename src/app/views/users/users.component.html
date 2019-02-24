@@ -16,33 +16,35 @@
                             <table class="table table-bordered table-striped table-sm">
                                 <thead>
                                     <tr>
+                                        <th>id</th>
                                         <th>Nom d'utilisateur</th>
                                         <th>Nom </th>
                                         <th>Prénom</th>
                                         <th>Adresse email</th>
                                         <th>Tel</th>
-                                        <th>role</th>
+                                        
                                         <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr  *ngFor="let user of users.result; let i = index">
+                                    <tr  *ngFor="let user of users; let i = index">
+                                        <td>{{user.id}}</td>
                                         <td>{{user.username}}</td>
                                         <td>{{user.firstname}}</td>
                                         <td>{{user.lastname}}</td>
                                         <td>{{user.email}}</td>
                                         <td>{{user.phone}}</td>
-                                        <td>{{user.roles}}</td>
+                                        
                                         <td>
 
 
                                             <span *ngIf="user.status == 1" class="badge badge-success">intéressé</span>
-                                            <!--                                            <span *ngIf="user.status == 0" class="badge badge-danger">pas intéressé</span>-->
+                                             <span *ngIf="user.status == 0" class="badge badge-danger">pas intéressé</span>
                                         </td>
                                         <td>
-                                            <a href="#"  class="btn btn-social-icon btn-dropbox" ><i class="fa fa-edit"></i></a>
-                                            <a href="#" class="btn btn-social-icon btn-danger"><i class="fa fa-times"></i></a> 
+                                            <a    routerLink="/users/userUpdate/{{user.id}}"  class="btn btn-social-icon btn-dropbox" ><i class="fa fa-edit"></i></a>
+                                            <a  (click)="deleteUser(user.id)"class="btn btn-social-icon btn-danger"><i class="fa fa-times"></i></a> 
 
                                         </td>
                                     </tr>

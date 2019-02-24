@@ -6,6 +6,9 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 import {Events} from './../models/events';
+import {User} from './../models/user';
+import {Magasins} from './../models/magasins';
+
 import {AuthService} from './../auth.service';
 
 @Injectable({
@@ -37,21 +40,45 @@ export class MagasinsService {
     }
     
     
-    getEvents(): Observable<any[]> {
+    getEventsList(): Observable<any[]> {
         console.log(this.token);
         const headers = new Headers({'Authorization': 'Bearer ' + this.token});
         return this.http.get(this.uri + 'events', {headers: headers}).map(res => <Events[]> res.json()).catch(this.handelError);
+        
+       
 
     }
     
      deleteEvents(id) {
          
-      console.log(id);
         const headers = new Headers();
         headers.append('Authorization', 'Bearer ' + this.token);
         return this.http.delete(this.uri + 'events/deleteevents'+ '/' + id, {headers: headers}).map(res => res.json()).catch(this.handelError);
 
     }
+    deleteMagasin(id) {
+         
+        const headers = new Headers();
+        headers.append('Authorization', 'Bearer ' + this.token);
+        return this.http.delete(this.uri + 'magasins/deletemagasin'+ '/' + id, {headers: headers}).map(res => res.json()).catch(this.handelError);
+
+    }
+    
+     addMagasins(magasin: Magasins) {
+
+        const headers = new Headers();
+        headers.append('Authorization', 'Bearer ' + this.token);
+        return this.http.post(this.uri + 'magasin/addmagasin', JSON.stringify(magasin), {headers: headers}).map(res => res.json()).catch(this.handelError);
+
+    }
+    interssedEvents(id) {
+         
+        const headers = new Headers();
+        headers.append('Authorization', 'Bearer ' + this.token);
+        return this.http.put(this.uri + 'events/interesed'+ '/' + id, {headers: headers}).map(res => res.json()).catch(this.handelError);
+
+    }
+    
    
     
     private handelError(error: Response) {
@@ -59,5 +86,15 @@ export class MagasinsService {
         return Observable.throw(error.json().errors || 'server error');
 
     }
+    
+    updateEvent(event: Events,id) {
+         
+        const headers = new Headers();
+        headers.append('Authorization', 'Bearer ' + this.token);
+         return this.http.put(this.uri + 'events/update/'+id, JSON.stringify(event),{headers: headers}).map(res => <Events[]> res.json()).catch(this.handelError);
+
+    }
+    
+    
 
 }

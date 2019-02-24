@@ -19,7 +19,7 @@ export class EventsComponent implements OnInit {
     event;
     public data: any[];
 
-    events: Array<Events> = [];
+    events: any;
     errorMessage: string;
     constructor(private _magasinstService: MagasinsService, private router: Router) {}
 
@@ -29,27 +29,38 @@ export class EventsComponent implements OnInit {
 
 
     getEvents() {
-        this._magasinstService.getEvents().subscribe(
+        this._magasinstService.getEventsList().subscribe(
             data => {
 
-                this.data = data.result;;
+                this.events = data;
 
             },
             error => this.errorMessage = <any> error
         );
 
     }
-   
-    
-    deleteEvent(event) {
-    this._magasinstService.deleteEvents(event).subscribe(
-            data => {
 
-               
+
+    deleteEvent(id) {
+        this._magasinstService.deleteEvents(id).subscribe(
+            data => {
+                this.getEvents();
+
 
             },
             error => this.errorMessage = <any> error
         );
-  }
+    }
+    intersedEvent(id) {
+        this._magasinstService.interssedEvents(id).subscribe(
+            data => {
+                this.getEvents();
+
+
+            },
+            error => this.errorMessage = <any> error
+        );
+    }
+
 
 }

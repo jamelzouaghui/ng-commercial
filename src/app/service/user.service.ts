@@ -62,17 +62,32 @@ export class UserService {
         return this.http.get(this.uri + 'users', {headers: headers}).map(res => <User[]> res.json()).catch(this.handelError);
 
     }
+    
+    
 
     getMagasins(): Observable<any[]> {
         const headers = new Headers({'Authorization': 'Bearer ' + this.token});
-        return this.http.get(this.uri + 'magasins', {headers: headers}).map(res => <Magasins[]> res.json()).catch(this.handelError);
+        return this.http.get(this.uri + 'magasins', {headers: headers}).map(res => <User[]> res.json()).catch(this.handelError);
 
     }
 
+    
 
+    deleteUser(id) {
+         
+      console.log(id);
+        const headers = new Headers();
+        headers.append('Authorization', 'Bearer ' + this.token);
+        return this.http.delete(this.uri + 'user/deleteuser'+ '/' + id, {headers: headers}).map(res => res.json()).catch(this.handelError);
 
+    }
+   updateUser(user: User,id) {
+         
+        const headers = new Headers();
+        headers.append('Authorization', 'Bearer ' + this.token);
+         return this.http.put(this.uri + 'users/updateuser/'+id, JSON.stringify(user),{headers: headers}).map(res => <User[]> res.json()).catch(this.handelError);
 
-   
+    }
 
     private handelError(error: Response) {
 

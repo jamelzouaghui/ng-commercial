@@ -1,9 +1,12 @@
 export class Magasins {
     
-    id: number;
+   id: number;
     firstname: string;
     lastname: string;
-    role: string;
+    username: string;
+    email: string;
+    password: string;
+    phone: number;
 
    
     

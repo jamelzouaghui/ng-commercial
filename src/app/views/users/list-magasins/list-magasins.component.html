@@ -1,6 +1,6 @@
 <div class="card">
-    <div class="card-header"> liste <small><code>des</code> groupes</small>
-
+    <div class="card-header"> liste <small><code>des</code> magasins</small>
+        <button class="btn btn-primary pull-right" type="button" routerLink="/magasins/magasinsAdd"><i class="fa fa-lightbulb-o"></i>&nbsp;Ajouter magasins</button>
     </div>
     <div class="card-body">
         <div class="animated fadeIn">
@@ -16,6 +16,7 @@
                             <table class="table table-bordered table-striped table-sm">
                                 <thead>
                                     <tr>
+                                        <th>id</th>
                                         <th>Nom de responsable magasinier</th>
                                         <th>Prénom de responsable magasinier</th>
                                         <th>Adresse email</th>
@@ -23,14 +24,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr  *ngFor="let magasin of magasins.result; let i = index">
+                                    <tr  *ngFor="let magasin of magasins; let i = index">
+                                         <td>{{magasin.id}}</td>
                                         <td>{{magasin.firstname}}</td>
                                         <td>{{magasin.lastname}}</td>
                                         <td>{{magasin.email}}</td>
 
                                         <td>
-                                            <a href="#"  class="btn btn-social-icon btn-dropbox" ><i class="fa fa-edit"></i></a>
-                                            <a href="#" class="btn btn-social-icon btn-danger"><i class="fa fa-times"></i></a> 
+                                            <a    routerLink="/users/userUpdate/{{magasin.id}}"  class="btn btn-social-icon btn-dropbox" ><i class="fa fa-edit"></i></a>
+                                            <a  (click)="deleteUser(magasin.id)"class="btn btn-social-icon btn-danger"><i class="fa fa-times"></i></a> 
+
 
                                         </td>
                                     </tr>
