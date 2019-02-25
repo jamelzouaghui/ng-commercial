@@ -71,12 +71,13 @@ export class MagasinsService {
         return this.http.post(this.uri + 'magasin/addmagasin', JSON.stringify(magasin), {headers: headers}).map(res => res.json()).catch(this.handelError);
 
     }
-    interssed(id) {
-        console.log(id);
-         
+    
+    eventinterssant(event: Events) {
+     
+        console.log(this.token);
         const headers = new Headers();
         headers.append('Authorization', 'Bearer ' + this.token);
-        return this.http.post(this.uri + 'events/interesed'+ '/' + id, {headers: headers}).map(res => <Events[]>res.json()).catch(this.handelError);
+        return this.http.post(this.uri + 'events/interessant/'+  event.id, JSON.stringify(event),{headers: headers}).map(res => <Events[]>res.json()).catch(this.handelError);
 
     }
     

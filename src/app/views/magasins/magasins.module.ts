@@ -9,6 +9,7 @@ import { UpdateEventsComponent } from './update-events/update-events.component';
 import { DeleteEventsComponent } from './delete-events/delete-events.component';
 import { AddMagasinsComponent } from './add-magasins/add-magasins.component';
 import { UpdateMagasinsComponent } from './update-magasins/update-magasins.component';
+import { EventsInterredComponent } from './events-interred/events-interred.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { UpdateMagasinsComponent } from './update-magasins/update-magasins.compo
     FormsModule,
     MagasinsRoutingModule
   ],
-  declarations: [EventsComponent, AddEventsComponent, UpdateEventsComponent, DeleteEventsComponent, AddMagasinsComponent, UpdateMagasinsComponent]
+  declarations: [EventsComponent, AddEventsComponent, UpdateEventsComponent, DeleteEventsComponent, AddMagasinsComponent, UpdateMagasinsComponent, EventsInterredComponent]
 })
 export class MagasinsModule { }

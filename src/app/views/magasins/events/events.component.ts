@@ -51,8 +51,9 @@ export class EventsComponent implements OnInit {
             error => this.errorMessage = <any> error
         );
     }
-    intersedEvent(id) {
-        this._magasinstService.interssed(id).subscribe(
+    intersedEvent(event) {
+        console.log(event);
+        this._magasinstService.eventinterssant(event).subscribe(
             data => {
                 this.getEvents();
 

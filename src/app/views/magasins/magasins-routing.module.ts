@@ -9,6 +9,7 @@ import {DeleteEventsComponent} from './../magasins/delete-events/delete-events.c
 import { UpdateEventsComponent } from './../magasins/update-events/update-events.component';
 import { AddEventsComponent } from './../magasins/add-events/add-events.component';
 import {AddMagasinsComponent} from './../magasins/add-magasins/add-magasins.component';
+import {EventsInterredComponent} from './../magasins/events-interred/events-interred.component';
 
 const routes: Routes = [
   {
@@ -56,7 +57,15 @@ const routes: Routes = [
         data: {
           title: 'magasinsAdd'
         }
-      }
+      },
+      {
+        path: 'interessedList/:id',
+        component: EventsInterredComponent,
+        canActivate:[AuthGuard],
+        data: {
+          title: 'interessedList'
+        }
+      },
       
     ]
   }
