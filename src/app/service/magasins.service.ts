@@ -49,6 +49,18 @@ export class MagasinsService {
 
     }
     
+    getEventsInteressedList(id): Observable<any[]> {
+        console.log(this.token);
+        const headers = new Headers({'Authorization': 'Bearer ' + this.token});
+        return this.http.get(this.uri + 'events/interssed/' +id, {headers: headers}).map(res => <Events[]> res.json()).catch(this.handelError);
+        
+       
+
+    }
+    
+    
+    
+    
      deleteEvents(id) {
          
         const headers = new Headers();
