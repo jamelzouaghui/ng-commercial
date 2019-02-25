@@ -38,9 +38,11 @@ export class LoginComponent {
             .subscribe(result => {
                
                 this._userService.getUser(this.username).subscribe(data => {
-                    console.log('yes');
+                   
                     console.log(data);
                     this.user = data;
+                    console.log(this.user[0].role);
+                    
                   
                     localStorage.setItem("currentUser", JSON.stringify(this.user[0]));
                     localStorage.setItem("role", JSON.stringify(this.user[0].role));

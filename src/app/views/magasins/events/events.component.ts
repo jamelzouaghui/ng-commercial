@@ -52,7 +52,7 @@ export class EventsComponent implements OnInit {
         );
     }
     intersedEvent(id) {
-        this._magasinstService.interssedEvents(id).subscribe(
+        this._magasinstService.interssed(id).subscribe(
             data => {
                 this.getEvents();
 

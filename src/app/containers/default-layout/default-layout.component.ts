@@ -1,6 +1,8 @@
 import {Component, Input, OnInit,ViewChild} from '@angular/core';
 import {navItems} from './../../_nav';
 import {navItemsAdmin} from './../../_navAdmin';
+import {navItemsUser} from './../../_navUser';
+import {navItemsMag} from './../../_navMag';
 import {User} from './../../models/user';
 import {UserService} from './../../service/user.service';
 import {ModalDirective} from 'ngx-bootstrap/modal/';
@@ -20,6 +22,7 @@ export class DefaultLayoutComponent implements OnInit {
     
     public navItems = navItems;
     public navItemsAdmin = navItemsAdmin;
+    public navItemsUser = navItemsUser;
     public sidebarMinimized = true;
     private changes: MutationObserver;
     public element: HTMLElement = document.body;
@@ -41,7 +44,9 @@ export class DefaultLayoutComponent implements OnInit {
     }
 
     ngOnInit() {
-  this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.role = JSON.parse(localStorage.getItem('role'));
+    
 
   
     }
